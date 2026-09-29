@@ -1,0 +1,493 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #243b55,
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #020617
+        );
+
+    color: white;
+}
+
+
+.app {
+    width: 100%;
+    max-width: 1100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    position: relative;
+}
+
+
+.calculator {
+    width: 380px;
+
+    padding: 25px;
+
+    border-radius: 28px;
+
+    background: rgba(15, 23, 42, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(20px);
+}
+
+.calculator-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.calculator-header h1 {
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+
+.calculator-header p {
+    font-size: 12px;
+
+    color: #94a3b8;
+}
+
+
+.history-btn {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #1e293b;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.history-btn:hover {
+    background: #334155;
+
+    transform: translateY(-2px);
+}
+
+
+.display {
+    min-height: 130px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 20px;
+
+    background: #020617;
+
+    overflow: hidden;
+}
+
+
+.previous-operand {
+    min-height: 25px;
+
+    color: #64748b;
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+}
+
+
+.current-operand {
+    width: 100%;
+
+    text-align: right;
+
+    font-size: 42px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.buttons {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+.btn {
+    height: 65px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    color: white;
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.btn:active {
+    transform: scale(0.94);
+}
+
+.number {
+    background: #1e293b;
+}
+
+
+.number:hover {
+    background: #334155;
+}
+
+
+.function {
+    background: #334155;
+
+    color: #cbd5e1;
+}
+
+
+.function:hover {
+    background: #475569;
+}
+
+.operator {
+    background: #2563eb;
+}
+
+
+.operator:hover {
+    background: #3b82f6;
+}
+
+
+.equals {
+    background: #16a34a;
+
+    grid-column: span 1;
+}
+
+
+.equals:hover {
+    background: #22c55e;
+}
+
+
+.zero {
+    grid-column: span 2;
+}
+
+
+.history-panel {
+    position: absolute;
+
+    right: 0;
+
+    top: 0;
+
+    width: 350px;
+
+    height: 100%;
+
+    min-height: 600px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: rgba(15, 23, 42, 0.98);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 25px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+
+    transform: translateX(120%);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s ease;
+
+    z-index: 10;
+}
+
+
+.history-panel.active {
+    transform: translateX(0);
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.history-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+}
+
+
+.history-header h2 {
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+
+.history-header p {
+    font-size: 12px;
+
+    color: #64748b;
+}
+
+
+.history-header button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #1e293b;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.history-list {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding-right: 5px;
+}
+
+
+.history-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.history-list::-webkit-scrollbar-thumb {
+    background: #334155;
+
+    border-radius: 10px;
+}
+
+.history-item {
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border-radius: 15px;
+
+    background: #1e293b;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.history-item:hover {
+    background: #334155;
+
+    transform: translateX(-3px);
+}
+
+
+.history-expression {
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+
+.history-result {
+    font-size: 22px;
+
+    font-weight: 600;
+
+    color: white;
+}
+
+.empty-history {
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #64748b;
+}
+
+
+.empty-history div {
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+
+.clear-history {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #7f1d1d;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+
+    transition: 0.2s;
+}
+
+
+.clear-history:hover {
+    background: #991b1b;
+}
+
+
+@media (max-width: 800px) {
+
+    .history-panel {
+        position: fixed;
+
+        right: 15px;
+
+        top: 15px;
+
+        width: calc(100% - 30px);
+
+        height: calc(100% - 30px);
+
+        min-height: 0;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .calculator {
+        width: 100%;
+
+        padding: 18px;
+
+        border-radius: 22px;
+    }
+
+
+    .btn {
+        height: 58px;
+
+        border-radius: 15px;
+    }
+
+
+    .current-operand {
+        font-size: 34px;
+    }
+
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modern Calculator</title>
+
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <div class="calculator">
+
+            <div class="calculator-header">
+                <div>
+                    <h1>Calculator</h1>
+                    <p>Simple & Powerful</p>
+                </div>
+
+                <button id="historyToggle" class="history-btn">
+                    🕘
+                </button>
+            </div>
+
+            <div class="display">
+
+                <div id="previousOperand" class="previous-operand">
+                </div>
+
+                <div id="currentOperand" class="current-operand">
+                    0
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn function" data-action="clear">
+                    AC
+                </button>
+
+                <button class="btn function" data-action="backspace">
+                    ⌫
+                </button>
+
+                <button class="btn function" data-action="percentage">
+                    %
+                </button>
+
+                <button class="btn operator" data-operator="/">
+                    ÷
+                </button>
+
+
+                <button class="btn number" data-number="7">
+                    7
+                </button>
+
+                <button class="btn number" data-number="8">
+                    8
+                </button>
+
+                <button class="btn number" data-number="9">
+                    9
+                </button>
+
+                <button class="btn operator" data-operator="*">
+                    ×
+                </button>
+
+
+                <button class="btn number" data-number="4">
+                    4
+                </button>
+
+                <button class="btn number" data-number="5">
+                    5
+                </button>
+
+                <button class="btn number" data-number="6">
+                    6
+                </button>
+
+                <button class="btn operator" data-operator="-">
+                    −
+                </button>
+
+
+                <button class="btn number" data-number="1">
+                    1
+                </button>
+
+                <button class="btn number" data-number="2">
+                    2
+                </button>
+
+                <button class="btn number" data-number="3">
+                    3
+                </button>
+
+                <button class="btn operator" data-operator="+">
+                    +
+                </button>
+
+
+                <button class="btn number zero" data-number="0">
+                    0
+                </button>
+
+                <button class="btn number" data-number=".">
+                    .
+                </button>
+
+                <button class="btn equals" data-action="calculate">
+                    =
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- History Panel -->
+        <aside id="historyPanel" class="history-panel">
+
+            <div class="history-header">
+
+                <div>
+                    <h2>History</h2>
+                    <p>Your previous calculations</p>
+                </div>
+
+                <button id="closeHistory">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div id="historyList" class="history-list">
+
+                <div class="empty-history">
+                    <div>🧮</div>
+                    <p>No calculations yet</p>
+                </div>
+
+            </div>
+
+
+            <button id="clearHistory" class="clear-history">
+                🗑 Clear History
+            </button>
+
+        </aside>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
